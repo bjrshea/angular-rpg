@@ -1,0 +1,6 @@
+<h1>Welcome to the game of life</h1>
+<div>
+  <input #newName>
+  <input #newBio>
+  <button (click)="startGame(newName.value, newBio.value); newName.value= ''; newBio.value='';" routerLink="questionOne">Happy Coding</button>
+</div>
