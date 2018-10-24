@@ -1,0 +1,8 @@
+.playerScoreBox {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  border: 1px solid black;
+  height: 50px;
+}

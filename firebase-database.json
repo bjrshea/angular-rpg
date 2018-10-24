@@ -1,0 +1,41 @@
+{
+  "questionPath": [
+    {
+      "question": ""
+    }],
+  "playerInfo": [
+    {
+      "name": "",
+      "bio": "",
+      "intelligence": 0
+  }],
+  "questions": [
+    {
+      "question": "Would you like to attend Epicodus?"
+    },
+    {
+      "question": "Question 2.1"
+    },
+    {
+      "question": "Question 2.2"
+    },
+    {
+      "question": "Question 3.1"
+    },
+    {
+      "question": "Question 3.2"
+    },
+    {
+      "question": "Question 4.1"
+    },
+    {
+      "question": "Question 4.2"
+    },
+    {
+      "question": "Question 5.1"
+    },
+    {
+      "question": "Question 5.2"
+    }
+  ]
+}

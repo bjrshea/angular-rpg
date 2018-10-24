@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PlayerInfo } from '../models/player-info';
 import { PlayerService } from '../player.service';
 import { PlayerScoreComponent } from '../player-score/player-score.component';
+import { FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database';
+import { QuestionsService } from '../questions.service';
+import { DatabaseModel }from '../models/database-model';
 
 @Component({
   selector: 'app-welcome',
@@ -9,12 +12,22 @@ import { PlayerScoreComponent } from '../player-score/player-score.component';
   styleUrls: ['./welcome.component.css'],
   providers: [PlayerService]
 })
-export class WelcomeComponent {
+export class WelcomeComponent implements OnInit {
 
-  constructor(private playerService: PlayerService) {
+  playerInfo: FirebaseObjectObservable<any>;
+
+  questions: FirebaseListObservable<any[]>;
+  firstQuestion: DatabaseModel;
+
+  constructor(private playerService: PlayerService, private questionService: QuestionsService) {
   }
+
+  ngOnInit() {
+    this.playerInfo = this.playerService.getPlayerInfo();
+  }
+
   startGame(name: string, bio: string) {
-    this.playerService.playerInfo[0].name = name;
-    this.playerService.playerInfo[0].bio = bio;
+    var newPlayer = new PlayerInfo(name, bio);
+    this.playerService.addPlayer(newPlayer);
   }
 }

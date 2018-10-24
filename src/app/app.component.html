@@ -1,7 +1,7 @@
 <app-player-score></app-player-score>
-<div *ngIf="this.playerService.playerInfo[0].intelligence >= 0">
-  <router-outlet></router-outlet>
-</div>
-<div *ngIf="this.playerService.playerInfo[0].intelligence < 0">
-  <app-game-over></app-game-over>
-</div>
+<!-- <div *ngIf="this.playerService.playerInfo[0].intelligence >= 0"> -->
+<router-outlet></router-outlet>
+<!-- </div> -->
+<!-- <div *ngIf="this.playerService.playerInfo[0].intelligence < 0"> -->
+  <!-- <app-game-over></app-game-over> -->
+<!-- </div> -->

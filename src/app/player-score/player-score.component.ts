@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PlayerService } from '../player.service';
 import { WelcomeComponent } from '../welcome/welcome.component';
+import { FirebaseObjectObservable } from 'angularfire2/database';
+
 
 @Component({
   selector: 'app-player-score',
@@ -8,8 +10,20 @@ import { WelcomeComponent } from '../welcome/welcome.component';
   styleUrls: ['./player-score.component.css'],
   providers: [PlayerService]
 })
-export class PlayerScoreComponent {
+export class PlayerScoreComponent implements OnInit {
 
-  constructor(private playerService: PlayerService) { }
+  playerInfo: FirebaseObjectObservable<any>;
+
+  playerName: string;
+  playerBio: string;
+  playerIntelligence: string;
+
+  constructor(private playerService: PlayerService) {
+
+  }
+
+  ngOnInit() {
+    this.playerInfo = this.playerService.getPlayerInfo();
+  }
 
 }

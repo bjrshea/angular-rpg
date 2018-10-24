@@ -8,6 +8,16 @@ import { PlayerScoreComponent } from './player-score/player-score.component';
 import { QuestionTwoComponent } from './question-two/question-two.component';
 import { QuestionThreeComponent } from './question-three/question-three.component';
 import { GameOverComponent } from './game-over/game-over.component';
+import { masterFirebaseConfig } from './firebase-keys';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
+export const firebaseConfig = {
+  apiKey: masterFirebaseConfig.apiKey,
+  authDomain: masterFirebaseConfig.authDomain,
+  databaseURL: masterFirebaseConfig.databaseURL,
+  storageBucket: masterFirebaseConfig.storageBucket
+};
 
 @NgModule({
   declarations: [
@@ -22,6 +32,8 @@ import { GameOverComponent } from './game-over/game-over.component';
   imports: [
     BrowserModule,
     routing,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]

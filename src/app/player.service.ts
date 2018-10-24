@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { PlayerInfo } from './models/player-info';
-import { PLAYERINFO } from './database';
+import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database';
+
 
 
 @Injectable({
@@ -8,10 +9,24 @@ import { PLAYERINFO } from './database';
 })
 export class PlayerService {
 
-  playerInfo: PlayerInfo[] = PLAYERINFO;
+  playerInfo: FirebaseObjectObservable<any>;
+  playerInfoList: FirebaseListObservable<any[]>;
+  constructor(private database: AngularFireDatabase) {
+    this.playerInfo = database.object('/playerInfo');
+  }
+
+  getPlayerInfo(){
+    this.playerInfo.subscribe(p => {
+    })
+    return this.playerInfo;
+  }
 
   addPlayer(newPlayer: PlayerInfo) {
-    this.playerInfo.push(newPlayer);
-    console.log(this.playerInfo);
+    this.playerInfo.set(newPlayer);
+  }
+
+  changeScore(changeScore: number) {
+    // this.playerInfo.intelligence.set(changeScore);
+    // Need to set updated intelligence
   }
 }

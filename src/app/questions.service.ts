@@ -1,15 +1,31 @@
 import { Injectable } from '@angular/core';
 import { DatabaseModel } from './models/database-model';
-import { QUESTIONS, QUESTIONPATH } from './questionsDatabase';
+// import { QUESTIONS, QUESTIONPATH } from './database';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuestionsService {
 
-  databaseModel: DatabaseModel[] = QUESTIONS;
+  questionList: FirebaseListObservable<any[]>;
 
-  questionPath: DatabaseModel[] = QUESTIONPATH;
+  questionPath: FirebaseObjectObservable<any>;
 
-  constructor() { }
+  firstQuestion: DatabaseModel;
+
+  constructor(private database: AngularFireDatabase) {
+    this.questionList = database.list('/questions');
+    this.questionPath = database.object('/questionPath');
+  }
+
+  getQuestions(){
+    this.questionList.subscribe(p => {
+    })
+    return this.questionList;
+  }
+
+  addQuestion(newQuestion: DatabaseModel) {
+    this.questionPath.set(newQuestion);
+  }
 }

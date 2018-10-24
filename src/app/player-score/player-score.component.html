@@ -1,8 +1,7 @@
-<div class="">
-  <ul *ngFor="let currentUser of this.playerService.playerInfo">
-    <li>Name: {{currentUser.name}}</li>
-    <li>Bio: {{currentUser.bio}}</li>
-    <li>Intelligence Score: {{currentUser.intelligence}}</li>
-    <li>Networking Score: {{currentUser.networking}}</li>
+<div>
+  <ul class="playerScoreBox">
+    <li class="playerScoreInfo">Name: {{(playerInfo | async)?.name}}</li>
+    <li class="playerScoreInfo">Bio: {{(playerInfo | async)?.bio}}</li>
+    <li class="playerScoreInfo">Intelligence Score: {{(playerInfo | async)?.intelligence}}</li>
   </ul>
 </div>
